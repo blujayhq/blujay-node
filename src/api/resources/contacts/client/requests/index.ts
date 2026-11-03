@@ -1,0 +1,13 @@
+export type { ContactAddTagParams } from "./ContactAddTagParams.js";
+export type { ContactAssignParams } from "./ContactAssignParams.js";
+export type { ContactCreateParams } from "./ContactCreateParams.js";
+export type { ContactDeleteParams } from "./ContactDeleteParams.js";
+export type { ContactGetParams } from "./ContactGetParams.js";
+export type { ContactListParams } from "./ContactListParams.js";
+export { ContactMarkCompletedParams } from "./ContactMarkCompletedParams.js";
+export type { ContactOptOutAddressParams } from "./ContactOptOutAddressParams.js";
+export type { ContactOptOutParams } from "./ContactOptOutParams.js";
+export type { ContactRemoveOptOutParams } from "./ContactRemoveOptOutParams.js";
+export type { ContactSearchParams } from "./ContactSearchParams.js";
+export type { ContactUpdateParams } from "./ContactUpdateParams.js";
+export type { ContactUpsertParams } from "./ContactUpsertParams.js";

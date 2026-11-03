@@ -1,0 +1,63 @@
+{
+  "name": "blujay",
+  "version": "1.0.0",
+  "description": "Official Node.js and TypeScript library for the Blujay API: send and receive iMessage, RCS and SMS.",
+  "license": "MIT",
+  "author": "Blujay <support@blujay.io>",
+  "homepage": "https://docs.blujay.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blujayhq/blujay-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blujayhq/blujay-node/issues"
+  },
+  "keywords": [
+    "blujay",
+    "imessage",
+    "rcs",
+    "sms",
+    "messaging",
+    "api"
+  ],
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "reference.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node scripts/mark-cjs.mjs",
+    "check": "tsc -p tsconfig.esm.json --noEmit",
+    "prepublishOnly": "npm run build",
+    "test": "node --test test/*.test.mjs && node scripts/check-runtimes.mjs",
+    "check:docs": "node scripts/check-docs.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.25.11",
+    "typescript": "~5.7.3"
+  }
+}
