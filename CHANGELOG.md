@@ -2,7 +2,7 @@
 
 All notable changes to this library are listed here. It follows [semantic versioning](https://semver.org).
 
-## 1.0.0 (2026-11-03)
+## 1.0.0 (2026-11-10)
 
 First release, covering the full Blujay API v1:
 
