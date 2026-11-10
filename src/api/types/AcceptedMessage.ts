@@ -34,7 +34,7 @@ export namespace AcceptedMessage {
         } as const;
         export type Direction = (typeof Direction)[keyof typeof Direction];
         export const DeliveryStatus = {
-            Queued: "queued",
+            Accepted: "accepted",
         } as const;
         export type DeliveryStatus = (typeof DeliveryStatus)[keyof typeof DeliveryStatus];
         /** The service you asked for, or null for Auto. */

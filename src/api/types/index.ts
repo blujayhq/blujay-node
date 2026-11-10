@@ -30,6 +30,8 @@ export * from "./ContactAssignmentActionResult.js";
 export * from "./ContactCardProfile.js";
 export * from "./ContactId.js";
 export * from "./ContactList.js";
+export * from "./ContactNote.js";
+export * from "./ContactNoteList.js";
 export * from "./ContactSearchResult.js";
 export * from "./ContactStageActionResult.js";
 export * from "./ContactSuppression.js";

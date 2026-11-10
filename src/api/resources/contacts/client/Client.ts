@@ -9,6 +9,7 @@ import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
 import * as Blujay from "../../../index.js";
+import { NotesClient } from "../resources/notes/client/Client.js";
 
 export declare namespace ContactsClient {
     export type Options = BaseClientOptions;
@@ -21,9 +22,14 @@ export declare namespace ContactsClient {
  */
 export class ContactsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ContactsClient.Options>;
+    protected _notes: NotesClient | undefined;
 
     constructor(options: ContactsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
+    }
+
+    public get notes(): NotesClient {
+        return (this._notes ??= new NotesClient(this._options));
     }
 
     /**

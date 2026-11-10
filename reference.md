@@ -3908,6 +3908,152 @@ await client.chats.typing.stop({
 </dl>
 </details>
 
+## Contacts Notes
+<details><summary><code>client.contacts.notes.<a href="/src/api/resources/contacts/resources/notes/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Blujay.ContactNote, Blujay.ContactNoteListResponse&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the contact's notes, newest first. Notes come from your team in Blujay, the API and automations like Zapier.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const pageableResponse = await client.contacts.notes.list({
+    contact_id: "contact_abc123"
+});
+for await (const item of pageableResponse) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+let page = await client.contacts.notes.list({
+    contact_id: "contact_abc123"
+});
+while (page.hasNextPage()) {
+    page = await page.getNextPage();
+}
+
+// You can also access the underlying response
+const response = page.response;
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Blujay.contacts.ContactNoteListParams` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotesClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contacts.notes.<a href="/src/api/resources/contacts/resources/notes/client/Client.ts">create</a>({ ...params }) -> Blujay.ContactNoteCreateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds a note to the contact. Your team sees it on the contact in Blujay, newest first. Send an `Idempotency-Key` to retry safely.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contacts.notes.create({
+    contact_id: "contact_abc123",
+    text: "SamCart purchase: Pro Coaching (annual)"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Blujay.contacts.ContactNoteCreateParams` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotesClient.IdempotentRequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Message Reactions
 <details><summary><code>client.messages.reactions.<a href="/src/api/resources/messages/resources/reactions/client/Client.ts">add</a>({ ...params }) -> Blujay.MessageReactionAddResponse</code></summary>
 <dl>
@@ -3923,7 +4069,7 @@ await client.chats.typing.stop({
 
 Adds a tapback to a message in an iMessage chat, from the Blujay phone number the chat belongs to. You can react to messages your contacts sent and to your own. The six standard reactions are `love`, `like`, `dislike`, `laugh`, `emphasize` and `question`. To react with any emoji, send `type: custom` with `emoji` set to exactly one emoji, such as `😍` or `👍🏽`. A symbol sent without its emoji style, such as `❤`, is sent and reported as iPhones send it (`❤️`). A message can carry one reaction per person on each part, so adding a different one, standard or emoji, replaces yours. Recipients on iOS 17 or earlier see an emoji reaction as the text "Reacted 😍 to …".
 
-Stickers contacts put on your messages arrive as `sticker` reactions, but you can't send stickers (`400 VALIDATION_ERROR`). A phone number that can't send emoji reactions yet returns `502 CHANGE_REJECTED`.
+Stickers contacts put on your messages arrive as `sticker` reactions, but you can't send stickers (`400 VALIDATION_ERROR`).
 
 A `202` means Blujay accepted the reaction and is sending it. Confirm it through the `reaction.added` webhook, where `reactor` is your phone number. If you already have that reaction on the message, Blujay returns `202` without sending it again. Send an `Idempotency-Key` so a retry after a lost response is safe.
 

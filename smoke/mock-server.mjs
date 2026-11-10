@@ -25,9 +25,9 @@ http.createServer((req, res) => {
     else if (key === 'PATCH /v1/messages/msg_down') out = fail(503, 'QUEUE_UNAVAILABLE');
     else if (key === 'GET /v1/chats/chat_unauth') out = fail(401, 'UNAUTHORIZED');
     else if (key === 'GET /v1/messages/msg_limited') out = fail(429, 'RATE_LIMITED');
-    else if (key === 'POST /v1/chats') out = ok({ chat_id: 'chat_new', message: { id: 'msg_1', direction: 'outbound', delivery_status: 'queued', service: null, from: '+15555550100', to: ['+15555550123'], created_at: '2026-10-17T17:00:00.000Z', parts: [] } }, 202);
+    else if (key === 'POST /v1/chats') out = ok({ chat_id: 'chat_new', message: { id: 'msg_1', direction: 'outbound', delivery_status: 'accepted', service: null, from: '+15555550100', to: ['+15555550123'], created_at: '2026-10-17T17:00:00.000Z', parts: [] } }, 202);
     else if (key === 'GET /v1/messages/msg_1') out = ok({ message_id: 'msg_1', chat_id: 'chat_new', phone_number_id: 'phone_1', direction: 'outbound', preferred_service: null, service: 'imessage', status: 'sent', parts: [], degradations: [], reply_to: null, sent_at: '2026-10-17T17:00:01.000Z', delivered_at: null, read_at: null, failed_at: null, failure: null });
-    else if (key === 'POST /v1/chats/chat_abc123/messages') out = ok({ chat_id: 'chat_abc123', message: { id: 'msg_1', direction: 'outbound', delivery_status: 'queued', service: 'imessage', from: '+15555550100' } }, 202);
+    else if (key === 'POST /v1/chats/chat_abc123/messages') out = ok({ chat_id: 'chat_abc123', message: { id: 'msg_1', direction: 'outbound', delivery_status: 'accepted', service: 'imessage', from: '+15555550100' } }, 202);
     else out = fail(404, 'NOT_FOUND');
     res.writeHead(out[0], { 'content-type': 'application/json', 'retry-after': '0' });
     res.end(JSON.stringify(out[1]));

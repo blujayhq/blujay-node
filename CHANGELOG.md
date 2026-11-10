@@ -10,7 +10,7 @@ First release, covering the full Blujay API v1:
 - Messages: send text, attachments, voice memos, contact cards and links; list, read, edit, unsend, threaded replies, and reactions (tapbacks and emoji)
 - Phone numbers, including Name and Photo Sharing, and iMessage and capability checks
 - Team members you can assign contacts to
-- Contacts (first and last names, and whether someone saved them), tags, assignment, opt-outs and workflows
+- Contacts (first and last names, and whether someone saved them), notes, tags, assignment, opt-outs and workflows
 - Attachments and vCards
 - Call recordings
 - Webhook subscriptions, deliveries and replays

@@ -36,6 +36,8 @@ export * from "./chats/resources/messages/types/index.js";
 export * from "./chats/resources/participants/client/requests/index.js";
 export * from "./chats/resources/participants/types/index.js";
 export * from "./chats/resources/typing/client/requests/index.js";
+export * from "./contacts/resources/notes/client/requests/index.js";
+export * from "./contacts/resources/notes/types/index.js";
 export * from "./messages/resources/reactions/client/requests/index.js";
 export * from "./messages/resources/reactions/types/index.js";
 export * from "./phoneNumbers/resources/contactCard/client/requests/index.js";

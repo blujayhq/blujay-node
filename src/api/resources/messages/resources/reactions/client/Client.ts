@@ -32,7 +32,7 @@ export class ReactionsClient {
     /**
      * Adds a tapback to a message in an iMessage chat, from the Blujay phone number the chat belongs to. You can react to messages your contacts sent and to your own. The six standard reactions are `love`, `like`, `dislike`, `laugh`, `emphasize` and `question`. To react with any emoji, send `type: custom` with `emoji` set to exactly one emoji, such as `😍` or `👍🏽`. A symbol sent without its emoji style, such as `❤`, is sent and reported as iPhones send it (`❤️`). A message can carry one reaction per person on each part, so adding a different one, standard or emoji, replaces yours. Recipients on iOS 17 or earlier see an emoji reaction as the text "Reacted 😍 to …".
      *
-     * Stickers contacts put on your messages arrive as `sticker` reactions, but you can't send stickers (`400 VALIDATION_ERROR`). A phone number that can't send emoji reactions yet returns `502 CHANGE_REJECTED`.
+     * Stickers contacts put on your messages arrive as `sticker` reactions, but you can't send stickers (`400 VALIDATION_ERROR`).
      *
      * A `202` means Blujay accepted the reaction and is sending it. Confirm it through the `reaction.added` webhook, where `reactor` is your phone number. If you already have that reaction on the message, Blujay returns `202` without sending it again. Send an `Idempotency-Key` so a retry after a lost response is safe.
      *
