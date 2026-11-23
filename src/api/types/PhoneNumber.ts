@@ -19,7 +19,7 @@ export interface PhoneNumber {
     access_type: PhoneNumber.AccessType;
     /** Whether the number can send right now. When `allowed` is false, `reason_code` and `reason` say why. */
     send_status: PhoneNumber.SendStatus;
-    /** Dedicated-line health. Omitted on the Shared Free Plan. */
+    /** Dedicated-line health, the same status the Phone Numbers page shows. Omitted on the Shared Free Plan and on numbers that are no longer active. */
     health_status?: PhoneNumber.HealthStatus | undefined;
     /** Live sending limits for a dedicated number. The values are specific to each number and change over time, so read them here each time instead of hard-coding them. Omitted on the Shared Free Plan. */
     limits?: PhoneNumber.Limits | undefined;
@@ -79,23 +79,50 @@ export namespace PhoneNumber {
     }
 
     /**
-     * Dedicated-line health. Omitted on the Shared Free Plan.
+     * Dedicated-line health, the same status the Phone Numbers page shows. Omitted on the Shared Free Plan and on numbers that are no longer active.
      */
     export interface HealthStatus {
+        /**
+         * - `healthy`: no issues found. New numbers start here.
+         * - `degraded`: few new contacts are replying. Make first texts more specific.
+         * - `critical`: Apple flagged the number. iMessages sent from it may not arrive.
+         */
         status: HealthStatus.Status;
-        score?: number | undefined;
-        as_of?: string | undefined;
-        freshness?: string | undefined;
+        /**
+         * Omitted when `status` is `healthy`.
+         * - `low_reply_rate`: fewer than 30% of new contacts replied this week.
+         * - `new_contacts_slowed`: fewer than 20% replied, so the number is limited to 10 new contacts a day until replies recover. `limits.new_contacts.limit_per_day` shows the limit.
+         * - `apple_flag`: Apple flagged the number.
+         */
+        reason_code?: HealthStatus.ReasonCode | undefined;
+        /** A short explanation you can show your users. Omitted when `status` is `healthy`. */
+        reason?: string | undefined;
     }
 
     export namespace HealthStatus {
+        /**
+         * - `healthy`: no issues found. New numbers start here.
+         * - `degraded`: few new contacts are replying. Make first texts more specific.
+         * - `critical`: Apple flagged the number. iMessages sent from it may not arrive.
+         */
         export const Status = {
             Healthy: "healthy",
             Degraded: "degraded",
             Critical: "critical",
-            Unknown: "unknown",
         } as const;
         export type Status = (typeof Status)[keyof typeof Status];
+        /**
+         * Omitted when `status` is `healthy`.
+         * - `low_reply_rate`: fewer than 30% of new contacts replied this week.
+         * - `new_contacts_slowed`: fewer than 20% replied, so the number is limited to 10 new contacts a day until replies recover. `limits.new_contacts.limit_per_day` shows the limit.
+         * - `apple_flag`: Apple flagged the number.
+         */
+        export const ReasonCode = {
+            LowReplyRate: "low_reply_rate",
+            NewContactsSlowed: "new_contacts_slowed",
+            AppleFlag: "apple_flag",
+        } as const;
+        export type ReasonCode = (typeof ReasonCode)[keyof typeof ReasonCode];
     }
 
     /**

@@ -21,7 +21,7 @@ export interface Message {
     /**
      * Present only when the message failed for a reason you can act on:
      * - `ATTACHMENT_FETCH_FAILED`: a media URL couldn't be downloaded.
-     * - `ATTACHMENT_TOO_LARGE`: a file is too large to send, including SMS/MMS messages whose files total more than 5 MiB.
+     * - `ATTACHMENT_TOO_LARGE`: a file is too large to send, including SMS/MMS messages whose files total more than 25 MiB.
      * - `UNSUPPORTED_ATTACHMENT_TYPE`: a file type can't be sent by the service the message went out on (for example a PDF over SMS) or in that group.
      * - `SENDER_RETIRED`: the sending number was retired. Send from an active number.
      * - `REPLY_REQUIRES_IMESSAGE`: a threaded reply could only go out as SMS or RCS, so it wasn't sent. Send it again without `reply_to`.
@@ -87,7 +87,7 @@ export namespace Message {
     /**
      * Present only when the message failed for a reason you can act on:
      * - `ATTACHMENT_FETCH_FAILED`: a media URL couldn't be downloaded.
-     * - `ATTACHMENT_TOO_LARGE`: a file is too large to send, including SMS/MMS messages whose files total more than 5 MiB.
+     * - `ATTACHMENT_TOO_LARGE`: a file is too large to send, including SMS/MMS messages whose files total more than 25 MiB.
      * - `UNSUPPORTED_ATTACHMENT_TYPE`: a file type can't be sent by the service the message went out on (for example a PDF over SMS) or in that group.
      * - `SENDER_RETIRED`: the sending number was retired. Send from an active number.
      * - `REPLY_REQUIRES_IMESSAGE`: a threaded reply could only go out as SMS or RCS, so it wasn't sent. Send it again without `reply_to`.

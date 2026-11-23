@@ -2,6 +2,14 @@
 
 All notable changes to this library are listed here. It follows [semantic versioning](https://semver.org).
 
+## 1.1.0 (2026-11-23)
+
+Phone number health now matches what the API returns:
+
+- `health_status` has a `status` (`healthy`, `degraded` or `critical`), plus a `reason_code` and a `reason` you can show your users when it isn't `healthy`. The reason codes are `low_reply_rate`, `new_contacts_slowed` and `apple_flag`.
+- Removed `score`, `as_of` and `freshness`, and the `unknown` status. The API no longer returns them, so code that read them was already getting nothing.
+- SMS and MMS messages can carry up to 25 MiB of files (was 5 MiB).
+
 ## 1.0.0 (2026-11-10)
 
 First release, covering the full Blujay API v1:
