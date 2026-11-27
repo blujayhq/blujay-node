@@ -13,7 +13,7 @@ export interface ContactSearchParams {
     phone_number?: string;
     /** Email address to match. */
     email?: string;
-    /** Free-text search. */
+    /** Free-text search of the contact's name, phone number, email and company. */
     q?: string;
     /** Maximum number of matches to return. */
     limit?: number;

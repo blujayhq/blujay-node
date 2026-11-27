@@ -19,4 +19,6 @@ export interface ContactUpdateParams {
     first_name?: string;
     /** Replaces the contact's last name. Sent without `name`, the name becomes the current first name and the new last name together. */
     last_name?: string;
+    /** Replaces the contact's company. Leave it out to keep the current one. */
+    company?: string;
 }

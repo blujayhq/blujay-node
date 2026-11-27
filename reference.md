@@ -1414,9 +1414,9 @@ const response = page.response;
 <dl>
 <dd>
 
-Creates a contact. `phone_number` is required; `email`, `name`, `first_name` and `last_name` are optional. Returns `409 CONTACT_ALREADY_EXISTS` if the phone number belongs to a saved contact, or the email to any other contact, in your workspace.
+Creates a contact. `phone_number` is required; `email`, `name`, `first_name`, `last_name` and `company` are optional. Returns `409 CONTACT_ALREADY_EXISTS` if the phone number belongs to a saved contact, or the email to any other contact, in your workspace.
 
-If Blujay already created a contact for this phone number (`saved: false`), this saves that contact instead: it keeps its `contact_id` and `created_at`, takes the `email` and names you send, and returns `201` with `saved: true`.
+If Blujay already created a contact for this phone number (`saved: false`), this saves that contact instead: it keeps its `contact_id` and `created_at`, takes the `email`, names and `company` you send, and returns `201` with `saved: true`.
 
 Creating a contact through the API doesn't send a webhook or start workflows that run on new contacts. To create or update in one call, use `POST /v1/contacts/import`.
 </dd>
@@ -1484,9 +1484,9 @@ await client.contacts.create({
 <dl>
 <dd>
 
-Creates or updates a contact by phone number. `phone_number` is required; `email`, `name`, `first_name` and `last_name` are optional.
+Creates or updates a contact by phone number. `phone_number` is required; `email`, `name`, `first_name`, `last_name` and `company` are optional.
 
-- If a contact has this phone number, Blujay updates it (`200`), including its email and names when you send them. A contact Blujay created (`saved: false`) becomes saved.
+- If a contact has this phone number, Blujay updates it (`200`), including its email, names and company when you send them. A contact Blujay created (`saved: false`) becomes saved.
 - If no contact has this phone number, Blujay creates one (`201`).
 - If you send an email that already belongs to a different contact, Blujay returns `409 CONTACT_MATCH_CONFLICT` and changes nothing. This happens even when no contact has the phone number.
 

@@ -11,6 +11,8 @@ export interface ContactStageActionResult {
     name?: string | undefined;
     first_name?: string | undefined;
     last_name?: string | undefined;
+    /** The contact's company. Left out when the contact has none. */
+    company?: string | undefined;
     tags: string[];
     stage: string;
     assigned_team_member: Blujay.AssignedTeamMember | null;

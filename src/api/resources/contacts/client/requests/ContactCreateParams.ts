@@ -24,4 +24,6 @@ export interface ContactCreateParams {
     first_name?: string;
     /** The contact's last name. Sent without `name`, the name becomes the first and last name together. */
     last_name?: string;
+    /** The contact's company. Workflows use it for `{{contact_company}}`. */
+    company?: string;
 }

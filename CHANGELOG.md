@@ -2,6 +2,10 @@
 
 All notable changes to this library are listed here. It follows [semantic versioning](https://semver.org).
 
+## 1.2.0 (2026-11-27)
+
+- Contacts have a `company`. Set it when you create, update or import a contact, and search matches it.
+
 ## 1.1.0 (2026-11-23)
 
 Phone number health now matches what the API returns:
